@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  body {
+  background: #1a1a1a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.card-inner {
+  width: 20vw;
+  height: 15vw;
+  position: relative;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+.card {
+  perspective: 50px;
+  width: 20vw;
+  height: 15vw;
+}
+
+.card:hover .card-inner{
+  transform: rotateY(180deg);
+}
+
+.card-front, .card-back {
+  rotate: 270deg;
+  position: absolute;
+  width: 20vw;
+  height: 15vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+  backface-visibility: hidden;  
+  transform-style: preserve-3d;
+  transition: all ease cubic-bezier(0.075, 0.99, 0.95, 0.1);
+}
+
+.card-front {
+  background-color: #1a1a1a;
+}
+
+.card-back {
+  background-color: #1a1a1a;
+  transform: rotateY(180deg);
+  }
+</style>
+<body>
+  <div class="card" id="meu-botao">
+  <div class="card-inner">
+     
+    <audio id="audio" src="SFX.mp3"></audio>
+    <img src="https://png.pngtree.com/png-vector/20240110/ourmid/pngtree-palm-hand-png-image_11433865.png" class="card-front" alt="">
+    <img src="https://www.pngarts.com/files/3/Hands-PNG-Image.png" class="card-back" style="transform: rotateZ(180deg); transform: rotateY(180deg);" alt="">
+
+  </div>
+</div>
+</body>
+<script>
+  const botao = document.getElementById('meu-botao');
+  const som = document.getElementById('audio');
+
+  botao.addEventListener('mouseenter', () => {
+    som.currentTime = 0; // Reinicia o áudio
+    som.play();          // Toca o som
+  });
+</script>
+</html>
