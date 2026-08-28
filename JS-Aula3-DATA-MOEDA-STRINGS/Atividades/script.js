@@ -11,46 +11,47 @@ class Heroi {
     }
     //Métodos
     correr() {
-        return "O Héroi está correndo";
+        return "<p>O Héroi está correndo</p>";
     }
     andar() {
-        return "O Herói está andando";
+        return "<p>O Herói está andando</p>";
     }
     atacar() {
-        return "O Héroi está atacando"
+        return "<p>O Héroi está atacando</p>"
     }
     defender() {
-        return "O Herói está se defendendo";
+        return "<p>O Herói está se defendendo</p>";
     }
 };
 
 
 //HOMEM ARANHA ---------------------------------------------------------------------
-const homemAranha = new Heroi("Pedro Parque", "500", "100km/h", "300");
+const homemAranha = new Heroi("Homem Aranha", "500", "100km/h", "300");
 
-homemAranha.teia = 1;
-
-function teia() {
-    if(homemAranha.teia == 1){
-        
+homemAranha.teia = (function(teia) {
+    if(teia == 1){
+        return "<p>Homem Aranha pode soltar teia</p>";
+    } else {
+        return "<p>Homem Aranha não pode soltar teia</p>";
     }
-}
+})(1);
 
 homemAranha.sentidoAranha = function(){
     document.write("<p>O Herói detectou um perigo!</p>");
 };
 
-homemAranha.sentidoAranha();
+//document.write(homemAranha.teia)
+//homemAranha.sentidoAranha();
 
 
 // SUPERMAN -------------------------------------------------------------------------
-const superman = new Heroi("Clarke Quente", "10000", "1200km/h", "10000");
+const superman = new Heroi("Superman", "10000", "1200km/h", "10000");
 
 superman.podeVoar = (function(voar){
     if(voar == 1) {
-        document.write("<p>Superman está voando</p>");
+        return "<p>Superman pode voar</p>";
     } else {
-        document.write("<p>Superman não está voando</p>");
+        return "<p>Superman não pode voar</p>";
     }
 })(1);
 
@@ -58,19 +59,36 @@ superman.visaoCalor = function(){
     document.write("<p>O Herói está usando sua visão de calor</p>");
 };
 
-superman.visaoCalor();
+//document.write(superman.podeVoar)
+//superman.visaoCalor();
 
 
 // BATMAN --------------------------------------------------------------------------
-const batman = new Heroi("Bruce Waine", "100", "20km/h", "200");
+const batman = new Heroi("Batman", "100", "20km/h", "200");
 
 batman.escondido = (function(escondido){
     if(escondido == 1) {
-        document.write("<p>Batman está escondido</p>");
+        return "<p>Batman está escondido</p>";
     } else {
-        document.write("<p>Batman está amostra</p>");
+        return "<p>Batman está visível</p>";
     }
-})(1);
+})(0);
+
+batman.investigar = function(){
+    document.write("<p>Batman está investigando um crime</p>");
+};
+
+//document.write(batman.escondido);
+//batman.investigar();
+
+
+// AÇÕES --------------------------------------------------------------------------
+document.write(homemAranha.nome);
+document.write(batman.correr());
+document.write(superman.visaoCalor());
+
+
+
 
 
 
