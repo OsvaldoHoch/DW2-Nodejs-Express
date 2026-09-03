@@ -21,7 +21,7 @@ const listaProdutos = [
         nome: "Tablet",
         marca: "Samsung",
         preco: 2000,
-        descricao: "Tablet para FreeFire"
+        descricao: "Tablet"
     },
     {
         nome: "Celular",
