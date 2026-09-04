@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produtos</title>
+</head>
+<body>
+    <h1 style="text-align: center;">Bem vindo a página clientes!</h1>
+    <a href="../homepage" style="display: flex; flex-direction: column; align-items: center;"><< Voltar</a>
+
+    <table border="1">
+
+        <tr>
+           <th width="150px">Clientes</th>
+           <th>CPF</th>
+        </tr>
+
+        <% clientes.forEach(cliente => {%>
+            <tr>
+                <th><%= cliente.nome%></th>
+                <th><%= cliente.cpf%></th>
+            </tr>
+        <%})%>
+    </table>
+</body>
+</html>
