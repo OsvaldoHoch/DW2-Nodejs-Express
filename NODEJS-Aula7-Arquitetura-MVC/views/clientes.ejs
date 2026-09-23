@@ -1,0 +1,23 @@
+<%- include ('partials/header.ejs')%>
+
+<%- include ('partials/navbar.ejs') %>
+    <a href="/"> << Voltar</a>
+    <br>
+    <h4 style="text-align: center;">Página Clientes</h4>
+
+    <table border="1">
+
+        <tr>
+           <th width="150px">Clientes</th>
+           <th>CPF</th>
+        </tr>
+
+        <% clientes.forEach(cliente => {%>
+            <tr>
+                <th><%= cliente.nome%></th>
+                <th><%= cliente.cpf%></th>
+            </tr>
+        <%})%>
+    </table>
+  
+<%- include ('partials/footer.ejs') %>
