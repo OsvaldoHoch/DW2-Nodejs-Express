@@ -18,7 +18,7 @@
                 <label for="endereco">Endereço do cliente</label>
                 <input type="text" name="endereco" id="endereco" class="form-control" required>
                 <!-- Campo invisível -->
-                 <input type="hidden" name="id" id="id" value="<%= cliente.id %>">
+                <input type="hidden" name="id" id="id" value="<%= cliente.id %>">
                 <br>
                 <button type="submit" class="btn btn-warning" onclick="return confirm('Deseja mesmo alterar o cliente <%= cliente.nome %>?')">Alterar</button>
                 <a href="/clientes">

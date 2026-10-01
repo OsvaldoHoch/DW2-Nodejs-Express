@@ -86,4 +86,5 @@ router.post("/clientes/alterar/", (req, res) => {
     });
 });
 
+Cliente.sync({force: false});
 export default router;
