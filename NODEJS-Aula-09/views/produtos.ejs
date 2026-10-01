@@ -1,34 +1,70 @@
 <%- include ('partials/header.ejs') %>
-<%- include ('partials/navbar.ejs') %>
+    <%- include ('partials/navbar.ejs') %>
 
-    <div class="container">
-        <div class="card">
-            <div class="card-header">
-                <h1>Produtos</h1>
+        <div class="container">
+            <div class="card">
+                <div class="card-header">
+                    <h1>Produtos</h1>
+                </div>
+                <div class="card-body">
+                    <form action="/produtos/cadastrar" method="POST">
+                        <label for="nome">Nome do Produto: </label>
+                        <input type="text" id="nome" name="nome" placeholder="Insira o nome do produto" class="form-control" required>
+
+                        <label for="preco">Preço: </label>
+                        <input type="text" id="preco" name="preco" placeholder="Insira o preço do produto" class="form-control" required>
+
+                        <label for="categoria">Categoria: </label>
+                        <input type="text" id="categoria" name="categoria" placeholder="Insira a categoria do produto" class="form-control" required>
+                        <br>
+                        <button type="submit" class="btn btn-success">Cadastrar</button>
+                        <button type="reset" class="btn btn-danger">Limpar</button>
+                    </form>
+                </div>
             </div>
-            <div class="card-body">
-                <table>
-                    <thead>
-                        <tr>
+        </div>
+        <br>
+        <div class="container">
+            <div class="card">
+                <div class="card-header">
+                    <h1>Produtos</h1>
+                </div>
+                <div class="card-body">
+                    <table>
+                        <thead>
                             <th></th>
                             <th>Nome:</th>
                             <th>Preço:</th>
                             <th>Categoria:</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <% produtos.forEach(produto => { %>
-                        <tr>
-                            <td><img src="imgs/product.png" width="30px"></td>
-                            <td><%= produto.nome %></td>
-                            <td><%= produto.preco.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'}) %></td>
-                            <td><%= produto.categoria %></td>
-                        </tr>
-                        <% }) %>
-                    </tbody>
-                </table>
+                            <th style="text-align: center;" colspan="2">Ações:</th>
+                        </thead>
+                        <tbody>
+                            <% produtos.forEach(produto=> { %>
+                                <tr>
+                                    <td><img src="imgs/order.png" width="30px" alt=""></td>
+                                    <td>
+                                        <%= produto.nome %>
+                                    </td>
+                                    <td>
+                                        <%= produto.preco.toLocaleString('pt-br', {style: 'currency' , currency: 'BRL'
+                                            }) %>
+                                    </td>
+                                    <td>
+                                        <%= produto.categoria %>
+                                    </td>
+                                    <td>
+                                        <!-- EDITAR REGISTRO -->
+                                        <a href="/produtos/editar/<%= produto.id %>" class="btn btn-warning">Editar</a>
+                                        <!-- EXCLUIR REGISTRO -->
+                                        <a href="/produtos/excluir/<%= produto.id %>" class="btn btn-danger"
+                                            onclick="return confirm('Deseja mesmo excluir o cliente <%= produto.nome %>')">Excluir</a>
+                                    </td>
+                                </tr>
+                                <% }) %>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
-    </div>
 
-<%- include ('partials/footer.ejs') %>
+        <%- include ('partials/footer.ejs') %>

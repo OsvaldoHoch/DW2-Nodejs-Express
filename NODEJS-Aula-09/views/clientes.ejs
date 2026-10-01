@@ -1,6 +1,36 @@
 <%- include ('partials/header.ejs') %>
     <%- include ('partials/navbar.ejs') %>
 
+        <!-- Formulário de cadastro de clientes -->
+        <div class="container">
+            <div class="card">
+                <div class="card-header">
+                <h1>Cadastrar Cliente</h1>
+                </div>
+
+                <div class="card-body">
+                    <!-- action: para onde os dados seram enviados -->
+                     <!-- Método "POST" -->
+                    <form action="/clientes/cadastrar" method="POST">
+                        <label for="nome">Nome do Cliente: </label>
+                        <input type="text" id="nome" name="nome" placeholder="Insira o nome do cliente" class="form-control" required>
+
+                        <label for="cpf">CPF do Cliente: </label>
+                        <input type="text" id="cpf" name="cpf" placeholder="Insira o CPF do cliente" class="form-control" required>
+
+                        <label for="endereco">Endereço do Cliente: </label>
+                        <input type="text" id="endereco" name="endereco" placeholder="Insira o endereço do Cliente" class="form-control" required>
+
+                        <br>
+
+                        <button type="submit" class="btn btn-success">Cadastrar</button>
+                        <button type="reset" class="btn btn-danger">Limpar</button>
+                    </form>
+                    <hr>
+                </div>
+            </div>
+        </div>
+        <br>
         <div class="container">
             <div class="card">
                 <div class="card-header">
@@ -14,10 +44,12 @@
                                 <th>Nome:</th>
                                 <th>CPF:</th>
                                 <th>Endereço:</th>
+                                <!-- Nova Coluna Ações -->
+                                <th style="text-align: center;" colspan="2">Ações:</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <% clientes.forEach(cliente=> { %>
+                            <% clientes.forEach(cliente => { %>
                                 <tr>
                                     <td><img src="imgs/avatar.png" width="30px"></td>
                                     <td>
@@ -29,6 +61,15 @@
                                     <td>
                                         <%= cliente.endereco %>
                                     </td>
+                                        <!--Botão de editar  -->
+                                    <td>
+                                        <a class="btn btn-warning" href="/clientes/editar/<%= cliente.id %>">Editar</a>
+                                    </td>
+                                    <!-- Botão de excluir -->
+                                     <td>
+                                        <a class="btn btn-danger" href="/clientes/excluir/<%=cliente.id%>" 
+                                            onclick="return confirm('Deseja mesmo excluir o cliente <%= cliente.nome %>')">Excluir</a>
+                                     </td>
                                 </tr>
                                 <% }) %>
                         </tbody>

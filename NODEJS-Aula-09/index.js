@@ -8,6 +8,9 @@ const app = express()
 app.set('view engine', 'ejs')
 // Define o uso da pasta "public" para uso de arquivos estáticos
 app.use(express.static('public'))
+// Configurnado Express para permitir dados através de formulários
+app.use(express.urlencoded({extend: false}));
+
 
 // REALIZNADO A CONEXÃO COM O BANCO DE DADOS =====================================================================================
 connection.authenticate().then(() => {
